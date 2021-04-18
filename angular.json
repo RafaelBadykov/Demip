@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Demip"
+    }
+  },
+  "defaultProject": "Demip",
+  "cli": {
+    "analytics": false
+  }
 }
