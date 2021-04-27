@@ -1,0 +1,71 @@
+<mat-accordion >
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Внутренняя норма рентабильности
+      </mat-panel-title>
+      <mat-panel-description>
+        Метод последовательных приближений, в котором в качестве
+        начального приближения используется норма дисконта проекта IRR0 = r.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-approximate-method></app-approximate-method>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion >
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Внутренняя норма рентабильности
+      </mat-panel-title>
+      <mat-panel-description>
+        Метод отыскания внутренней нормы доходности
+        основанный на приближенном методе нахождения корней уравнения
+        путем деления отрезка пополам
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-cut-in-half></app-cut-in-half>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-card>
+  <mat-card-title>Внутренняя норма рентабельности</mat-card-title>
+  <mat-card-content>
+    <p>Внутренняя норма рентабельности (доходности) (IRR – Internal Rate of Return) – это такая ставка дисконта, при которой сумма
+      дисконтированных доходов за весь период реализации инвестиционного проекта равна сумме первоначальных затрат (инвестициям).
+      Ее можно трактовать как максимальную ставку – процент, под который можно взять кредит для финансирования проекта с помощью заемного капитала. Для определения IRR нужно решить
+      уравнение NPV = 0, которое с учетом формул
+      <img src="assets/images/npv04.png" alt="img" style="vertical-align:middle">
+      ,
+      <img src="assets/images/npv05.png" alt="img" style="vertical-align:middle">
+      трансформируется в нелинейное уравнение степени Т + 1 относительно
+      барьерной ставки IRR:
+      <img src="assets/images/iror01.png" alt="img" style="vertical-align:middle">
+      В общем случае для нахождения внутренней нормы доходности используются приближенные методы. Один из них – метод
+      последовательных приближений, в котором в качестве начального
+      приближения используется норма дисконта проекта IRR0 = r. Тогда равенство (8.10) записывается в виде рекуррентной последовательности:
+      <img src="assets/images/iror01.png" alt="img" style="vertical-align:middle">
+      Подставляя найденное значение IRR1 в предудущую формулу для получения следующего приближения IRR2 и повторяя эту процедуру
+      многократно, для произвольного IRRn имеем
+      <img src="assets/images/iror03.png" alt="img" style="vertical-align:middle">
+      Процедура прекращается, как только разница между двумя
+      последними значениями станет меньше заданной точности расчетов ε:
+      <img src="assets/images/iror04.png" alt="img" style="vertical-align:middle">
+      Еще один метод отыскания внутренней нормы доходности
+      основан на приближенном методе нахождения корней уравнения
+      путем деления отрезка пополам. Для этого необходимо найти два
+      таких значения IRR1 = r1 и IRR2 = r2, чтобы рассчитанные с их помощью NPV имели разные знаки, например NPV1 < 0, NPV2 > 0
+      (см.  <img src="assets/images/npv02.png" alt="img" style="vertical-align:middle">
+      ), тогда барьерная ставка определяется с использованием формулы линейной интерполяции:
+      <img src="assets/images/iror04.png" alt="img" style="vertical-align:middle">
+      Для нахождения IRR также можно воспользоваться финансовой
+      функцией ВНД в программе Excel, входящей в Microsoft Office. Сначала формируется массив данных, содержащий суммарные денежные потоки Cash Flow за годы реализации проекта. Далее в строке
+      формул выбирается функция «= ВНД (ссылка1:ссылка2)», где
+      «ссылка1:ссылка2» – массив ячеек с числовыми значениями CF, для
+      которых необходимо рассчитать внутреннюю норму доходности.
+      Внутреннюю норму доходности обычно сравнивают с нормой
+      дисконта. Если IRR > r, то проект будет прибыльным, если IRR < r,
+      то проект будет убыточным.
+    </p>
+  </mat-card-content>
+</mat-card>

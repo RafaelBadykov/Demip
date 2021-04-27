@@ -1,0 +1,58 @@
+<mat-card align="center" [formGroup]="values">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Первая норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="discountRateFirst" type="number" [(ngModel)]="discountRateFirst">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Вторая норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="discountRateSecond" type="number" [(ngModel)]="discountRateSecond">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Первый чистый дисконтированный доход</mat-label>
+      <label>
+        <input matInput formControlName="NPVFirst" type="number" [(ngModel)]="NPVFirst">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Второй чистый дисконтированный доход</mat-label>
+      <label>
+        <input matInput formControlName="NPVSecond" type="number" [(ngModel)]="NPVSecond">
+      </label>
+    </mat-form-field>
+  </p>
+  <button *ngIf="values.valid"
+          style="margin-bottom: 20px"
+          mat-raised-button color="primary"
+          (click)="calculate()">
+    Вычислить
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="isNormalValue(result) && values.valid && !showErrorNotification">
+  <button
+    mat-raised-button color="primary">
+    Результат: Внутренняя норма рентабильности ровна {{this.result}}
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="showErrorNotification">
+  <button
+    mat-raised-button color="warn">
+    Ошибка: Деление на ноль.
+  </button>
+</mat-card>

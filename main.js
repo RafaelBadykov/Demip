@@ -1,16 +1,31 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-
+/* Конфигурация настольного приложения */
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
+    autoHideMenuBar: true,
+    resizable: false
   })
 
-  win.loadFile('index.html')
+  win.loadFile('dist/Demip/index.html')
+
+  win.on('close', function(e) {
+    const choice = require('electron').dialog.showMessageBoxSync(this,
+      {
+        type: 'question',
+        buttons: ['Да', 'Нет'],
+        title: 'Подтверждение',
+        message: 'Вы уверены, что хотите выйти из программы?'
+      });
+    if (choice === 1) {
+      e.preventDefault();
+    }
+  });
 }
 
 app.whenReady().then(() => {

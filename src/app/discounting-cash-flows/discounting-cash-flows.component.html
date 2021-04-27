@@ -1,0 +1,65 @@
+<mat-card align="center" [formGroup]="values">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="discountRate" type="number" [(ngModel)]="discountRate">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Шаг расчета</mat-label>
+      <label>
+        <input matInput formControlName="calculationStep" type="number" [(ngModel)]="calculationStep">
+      </label>
+    </mat-form-field>
+  </p>
+  <button *ngIf="values.valid"
+          style="margin-bottom: 20px"
+          mat-raised-button color="primary"
+          (click)="calculate()">
+    Вычислить
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="isNormalValue(result) && values.valid && !showErrorNotification">
+  <button
+    mat-raised-button color="primary">
+    Результат: Коэффициент дисконтирования равен {{this.result}}
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="showErrorNotification">
+  <button
+    mat-raised-button color="warn">
+    Ошибка: Деление на ноль.
+  </button>
+</mat-card>
+<mat-card>
+  <mat-card-title>Дисконтирование денежных потоков </mat-card-title>
+  <mat-card-content>
+    <p>Динамические методы оценки энергосберегающих инвестиционных проектов используются в случае длительного срока реализации проекта. При этом необходимо учитывать вероятностный характер развития событий и риски, сопутствующие реализации проекта, рассчитывать параметры с некоторым «запасом
+      прочности». В этом случае обычно прибегают к использованию дисконтированных величин, учитывающих меру обесценивания денежных средств с течением времени. Величина временного дисконта описывается коэффициентом дисконтирования
+      следующего вида:<img src="assets/images/dcf01.png" alt="img" style="vertical-align:middle">
+      где r – это норма или ставка дисконта, характеризующая минимальную потребную прибыль предприятия. Она показывает, под
+      какую минимальную доходность участники рынка готовы инвестировать средства в проект. Коэффициент t – это шаг расчета,
+      обычно измеряется в годах (t = 0, 1, 2, …, T), где T – горизонт расчета (последний год действия проекта). Обычно предполагается,
+      что проект действует до тех пор, пока работает оборудование, в
+      которое инвестирован капитал, тогда горизонт расчета соответствует сроку амортизации оборудования.
+      Коэффициент дисконтирования позволяет приводить будущие денежные потоки к текущему моменту времени.
+      Например, если на текущий момент времени планируется прибыль D, то через два года эта прибыль станет равной D/(1 + r)^2 ,
+      т. е. дисконтируется в 1/(1 + r)^2 раз.
+      Для анализа энергосберегающих инвестиционных проектов
+      используются следующие параметры, учитывающие дисконтирование во времени:
+      − чистый дисконтированный доход;
+      − внутренняя норма прибыли;
+      − динамический срок окупаемости инвестиций;
+      − индекс доходности
+    </p>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,58 @@
+<mat-card align="center" [formGroup]="values"> <!--Подключение группы валидатора-->
+  <p>
+    <mat-form-field appearance="outline"> <!--Поле ввода "Норма или ставка дисконта"-->
+      <mat-label>Норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="presentValue" type="number" [(ngModel)]="presentValue">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline"> <!--Поле ввода "Шаг расчета"-->
+      <mat-label>Шаг расчета</mat-label>
+      <label>
+        <input matInput formControlName="investedCapital" type="number" [(ngModel)]="investedCapital">
+      </label>
+    </mat-form-field>
+  </p>
+  <!--Если нет ошибок валидации, показывается кнопка вычислить-->
+  <button *ngIf="values.valid"
+          style="margin-bottom: 20px"
+          mat-raised-button color="primary"
+          (click)="calculate()">
+    Вычислить
+  </button>
+</mat-card>
+<!--Если результат это нормальное число, то выводится ответ-->
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="isNormalValue(result) && values.valid && !showErrorNotification">
+  <button
+    mat-raised-button color="primary">
+    Результат: Индекс рентабельности равен {{this.result}}
+  </button>
+</mat-card>
+<!--Если результут не нормальное число, то отображается ошибка-->
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="showErrorNotification">
+  <button
+    mat-raised-button color="warn">
+    Ошибка: Деление на ноль.
+  </button>
+</mat-card>
+<!--Теоритическая часть-->
+<mat-card>
+  <mat-card-title>Индекс рентабельности</mat-card-title>
+  <mat-card-content>
+    <p>Индекс рентабельности PI (Profitability Index) определяется
+      отношением текущей ценности проекта к инвестициям:
+      <img src="assets/images/pi01.png" alt="img" style="vertical-align:middle">
+      В отличие от параметра NPV этот параметр является относительным, поэтому может использоваться при сравнении разнородных проектов между собой.
+      Если индекс рентабельности больше единицы, значит, выгоды
+      преобладают над затратами и проект принимается. Если индекс
+      рентабельности меньше единицы, проект убыточный, он отвергается. Из нескольких проектов наиболее предпочтительным будет
+      проект с максимальным индексом рентабельности
+    </p>
+  </mat-card-content>
+</mat-card>

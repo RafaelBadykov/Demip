@@ -1,0 +1,58 @@
+<mat-card align="center" [formGroup]="values">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="discountRate" type="number" [(ngModel)]="discountRate">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Шаг расчета</mat-label>
+      <label>
+        <input matInput formControlName="calculationStep" type="number" [(ngModel)]="calculationStep">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Однократные инвестиции</mat-label>
+      <label>
+        <input matInput formControlName="investedCapital" type="number" [(ngModel)]="investedCapital">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Текущая ценность проекта</mat-label>
+      <label>
+        <input matInput formControlName="presentValue" type="number" [(ngModel)]="presentValue">
+      </label>
+    </mat-form-field>
+  </p>
+  <button *ngIf="values.valid"
+          style="margin-bottom: 20px"
+          mat-raised-button color="primary"
+          (click)="calculate()">
+    Вычислить
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="isNormalValue(result) && values.valid && !showErrorNotification">
+  <button
+    mat-raised-button color="primary">
+    Результат: Чистый дисконтированный доход равен {{this.result}}
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="showErrorNotification">
+  <button
+    mat-raised-button color="warn">
+    Ошибка: Деление на ноль.
+  </button>
+</mat-card>

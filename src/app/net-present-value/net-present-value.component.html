@@ -1,0 +1,57 @@
+<mat-accordion >
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Чистый дисконтированный доход</mat-panel-title>
+      <mat-panel-description>Как разница между всеми денежными притоками и оттоками, приведенными к текущему моменту времени.</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-difference-inflow-outflow></app-difference-inflow-outflow>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion >
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Чистый дисконтированный доход</mat-panel-title>
+      <mat-panel-description>В качестве оттока денежных средств можно рассматривать однократные инвестиции IC.</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-one-time-investment></app-one-time-investment>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion >
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Чистый дисконтированный доход</mat-panel-title>
+      <mat-panel-description>Если предприятие каждый год рассчитывает получать один и тот же приток денежных средств.</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-same-inflow></app-same-inflow>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-card>
+  <mat-card-title>Чистый дисконтированный доход</mat-card-title>
+  <mat-card-content>
+    <p>Чистый дисконтированный доход (NPV – Net Present Value)
+      определяется как разницу между всеми денежными притоками и
+      оттоками, приведенными к текущему моменту времени:
+      <img src="assets/images/npv01.png" alt="img" style="vertical-align:middle">
+      Для инвестиционных проектов, связанных с закупкой основных средств производства, в качестве оттока денежных средств
+      можно рассматривать однократные инвестиции IC, производимые
+      до начала реализации проекта, т. е. в нулевом году. Тогда инвестиционный капитал не дисконтируется, а формула для расчета
+      дисконтированной прибыли преобразуется к виду
+      <img src="assets/images/npv02.png" alt="img" style="vertical-align:middle">
+      В случае NPV > 0 приток денежных средств за время действия
+      проекта превысит инвестированный капитал на величину предполагаемого дохода. Если NPV
+      < 0, проект – убыточный. Таким образом, из нескольких проектов необходимо выбирать проект с
+      наибольшим показателем NPV.
+      Если предприятие каждый год рассчитывает получать один и
+      тот же приток денежных средств
+      <img src="assets/images/npv03.png" alt="img" style="vertical-align:middle">
+      то предидущее выражение упрощается
+      <img src="assets/images/npv03.png" alt="img" style="vertical-align:middle">
+      где PV – текущая ценность проекта, ден. ед.; AT – коэффициент,
+      рассчитываемый по формуле для T членов ряда геометрической
+      прогрессии:
+      <img src="assets/images/npv04.png" alt="img" style="vertical-align:middle">
+    </p>
+  </mat-card-content>
+</mat-card>

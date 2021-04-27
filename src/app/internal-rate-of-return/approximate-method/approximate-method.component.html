@@ -1,0 +1,66 @@
+<mat-card align="center" [formGroup]="values">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Норма или ставка дисконта</mat-label>
+      <label>
+        <input matInput formControlName="discountRate" type="number" [(ngModel)]="discountRate">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Годовая прибыль</mat-label>
+      <label>
+        <input matInput formControlName="netProfit" type="number" [(ngModel)]="netProfit">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Однократные инвестиции</mat-label>
+      <label>
+        <input matInput formControlName="investedCapital" type="number" [(ngModel)]="investedCapital">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Шаг расчета</mat-label>
+      <label>
+        <input matInput formControlName="calculationStep" type="number" [(ngModel)]="calculationStep">
+      </label>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Точность</mat-label>
+      <label>
+        <input matInput formControlName="accuracy" type="number" [(ngModel)]="accuracy">
+      </label>
+    </mat-form-field>
+  </p>
+  <button *ngIf="values.valid"
+          style="margin-bottom: 20px"
+          mat-raised-button color="primary"
+          (click)="calculate(discountRate)">
+    Вычислить
+  </button>
+</mat-card>
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="isNormalValue(result) && values.valid && !showErrorNotification">
+  <button
+    mat-raised-button color="primary">
+    Результат: Внутренняя норма рентабильности ровна {{this.result}}
+  </button>
+</mat-card>
+
+<mat-card style="align-items: center;
+    display: flex;
+    flex-direction: column;" *ngIf="showErrorNotification">
+  <button
+    mat-raised-button color="warn">
+    Ошибка: Деление на ноль.
+  </button>
+</mat-card>
+
