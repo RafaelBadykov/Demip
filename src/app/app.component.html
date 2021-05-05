@@ -1,45 +1,51 @@
 <mat-tab-group #tabGroup mat-align-tabs="center" color="accent" backgroundColor="primary">
   <mat-tab class="main-mat-tab" label="Главная">
-    <mat-card class="main-mat-tab__card">
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="tabGroup.selectedIndex=1">
-        Дисконтирование денежных потоков
-      </button>
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="tabGroup.selectedIndex=2">
-        Чистый дисконтированный доход
-      </button>
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="tabGroup.selectedIndex=3">
-        Дисконтированный период окупаемости
-      </button>
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="tabGroup.selectedIndex=4">
-        Внутренняя норма рентабельности
-      </button>
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="tabGroup.selectedIndex=5">
-        Индекс рентабельности
-      </button>
-      <button class="main-mat-tab__card__button"
-              mat-raised-button color="primary"
-              (click)="onTextbookButtonClick()">
-        Пособие и методические указания
-      </button>
+    <mat-card style="margin-top: 100px">
+      <h2 class="mat-h1"
+          align="center">
+        ДИНАМИЧЕСКИЕ МЕТОДЫ ОЦЕНКИ ИНВЕСТИЦИОННЫХ ПРОЕКТОВ
+      </h2>
     </mat-card>
-    <mat-card style="align-items: center;
-    display: flex;
-    flex-direction: column;">
-      <button mat-raised-button color="accent">
-        BADYKOV STD.
-      </button>
-    </mat-card>
+    <!--Кнопки на главном экране-->
+      <mat-card class="main-mat-tab__card">
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=1">
+          Дисконтирование денежных потоков
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=2">
+          Чистый дисконтированный доход
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=3">
+          Дисконтированный период окупаемости
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=4">
+          Внутренняя норма рентабельности
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=5">
+          Индекс рентабельности
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="onTextbookButtonClick()">
+          Пособие и методические указания
+        </button>
+        <button class="main-mat-tab__card__button"
+                mat-raised-button color="primary"
+                (click)="tabGroup.selectedIndex=6">
+          Литература
+        </button>
+      </mat-card>
   </mat-tab>
+  <!--Модули программы-->
   <mat-tab label="Дисконтирование денежных потоков">
     <mat-card>
       <button
@@ -89,5 +95,45 @@
       </button>
     </mat-card>
     <app-profitability-index></app-profitability-index>
+  </mat-tab>
+  <mat-tab label="Литература">
+    <mat-card align="center">
+      <mat-card-title>Литература</mat-card-title>
+      <p>1. Теплотехника: учеб. для студентов втузов / А. М. Архаров [и др.];
+        под общ. ред. В. И. Крутова. – М.: Машиностроение, 1986. – 432 с. </p>
+      <p>2. Колпакова, Н. В. Газоснабжение: учеб. пособие / Н. В. Колпакова, А. С. Колпаков; под ред. Н. П. Ширяева;
+        М-во образования
+        и науки Рос. Федерации, Урал. федер. ун-т. – Екатеринбург: Изд-во
+        Урал. ун-та, 2014. – 200 с</p>
+      <p>3. Андрижиевский, А. А. Энергосбережение и энергетический
+        менеджмент / А. А. Андрижиевский, В. И. Володин. – Минск: Выш.
+        шк., 2005. – 294 с. </p>
+      <p>4. Кутателадзе, С. С. Теплопередача и гидродинамическое сопротивление / С. С. Кутателадзе. – М.:
+        Энергоатомиздат, 1990. – 367 с.</p>
+      <p>вление / С. С. Кутателадзе. – М.: Энергоатомиздат, 1990. – 367 с.
+        5. Селезнев А. Энергоэффективность в строительстве / А. Селезнев // Энергоэффективность и энергосбережение.
+        Архитектура
+        и строительство. – 2009. – № 10. – С. 33–35.</p>
+      <p>6. Володин, В. И. Теплофизика и энергетический менеджмент
+        в строительстве / В. И. Володин. – Минск: БГТУ, 2006. </p>
+      <p>7. Методические рекомендации по составлению технико-экономических обоснований для энергосберегающих мероприятий
+        [Электронный ресурс]. – Режим доступа: http://energoeffekt.gov.by/. –
+        Дата доступа: 08.02.2018.</p>
+      <p>8. Володин, В. И. Энергосбережение: учеб. пособие / В. И. Володин. – Минск: БГТУ, 2001. – 168 с.</p>
+      <p>9. Хутская, Н. Г. Основы энергосбережения: курс лекций /
+        Н. Г. Хутская. – Минск: Тэхналогiя, 1999. – 100 с. </p>
+      <p>10. Сухоцкий, А. Б. Нетрадиционные и возобновляемые источники энергии / А. Б. Сухоцкий, В. Н. Фарафонтов. –
+        Минск:
+        БГТУ, 2009. – 244 с.</p>
+      <p>11. Алешина, А. С. Газификация твердого топлива / А. С. Алешина, В. В. Сергеев. – СПб.: Изд-во Политехн. ун-та,
+        2010. – 202 с. </p>
+      <p>12. Ковалев, В. В. Методы оценки инвестиционных проектов /
+        В. В. Ковалев. – М.: Финансы и статистика, 1998. – 143 с.</p>
+      <p>13. Манжинский, С. А. Инвестиционное проектирование: метод. указания / А. С. Манжинский, Л. А. Радкевич. –
+        Минск: БГТУ,
+        2010. – 57 с</p>
+      <p>14. Дмитриченко, А. С. Энергетическое планирование и финансы в сфере энергосбережения: метод. указания / А. С.
+        Дмитриченко, С. А. Манжинский. – Минск: БГТУ, 2013. – 75 с. </p>
+    </mat-card>
   </mat-tab>
 </mat-tab-group>
